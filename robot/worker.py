@@ -78,7 +78,7 @@ def robot_processor(param):
                 chat_room = get_chat_room(chat_room_name)
                 chat_room.send_msg("hi, i'm robot, random send msg")
             else:
-                log.info("random num:%s" % n)
+                log.info("random num:%s != 0, will not send msg" % n)
         else:
             log.info("robot will not send msg")
         n_rooms = len(chat_room_list)

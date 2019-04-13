@@ -68,6 +68,47 @@ def robot_processor(param):
                 return e
         return None
 
+    def send_task():
+        col_account = db.get_col_wechat_account_sync()
+        account = mongo.mongo_find_one(col_account, {"_id": _id})
+        if not account:
+            log.error("account not found for _id:%s" % _id)
+            return
+        ut = account['ut']
+        ts_now = int(time.time())
+        if ts_now < ut + 60:
+            log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ut))
+            return
+
+        col_task = db.get_col_task_sync()
+        task = mongo.mongo_find_and_modify(col_task,
+                                           {'cnt_send': 0}, {'$inc': {'cnt_send': 1}},
+                                           upsert=False)
+        if not task:
+            log.info("no tasks, return")
+            return
+
+        task_id = task['_id']
+        title = task['title']
+        url = task['url']
+        msg = "%s\n%s" % (title, url)
+        chat_room_name = '机器人测试'
+        chat_room = get_chat_room(chat_room_name)
+        if not chat_room:
+            log.error("chat_room:%s not found" % chat_room_name)
+            # reset back task cnt_send
+            mongo.mongo_update_one(col_task, {'_id': task_id}, {'$inc': {'cnt_send': -1}})
+            return
+
+        ret = mongo.mongo_update_one(col_account, {'_id': _id}, {'$set': {'ut': ts_now}})
+        if not ret:
+            log.error("send_task, update _id:%s ut failed, return" % _id)
+            mongo.mongo_update_one(col_task, {'_id': task_id}, {'$inc': {'cnt_send': -1}})
+            return
+
+        chat_room.send_msg(msg)
+        log.info("_id:%s, send msg:%s" % (_id, msg))
+
     def work():
         global msg_send
         chat_room_name = '机器人测试'
@@ -101,4 +142,5 @@ def robot_processor(param):
             log_out(_id)
             sys.exit(0)
         elif status == wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE:
-            work()
+            # work()
+            send_task()

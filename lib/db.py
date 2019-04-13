@@ -20,3 +20,7 @@ def get_col_wechat_account():
 
 def get_col_wechat_account_sync():
     return mongo.mongo_collection('wechat_robot', 'wechat_account', config.DB_HOST, config.DB_PORT)
+
+
+def get_col_task_sync():
+    return mongo.mongo_collection('task', 'task', config.DB_HOST, config.DB_PORT)

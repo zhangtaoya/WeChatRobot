@@ -6,13 +6,14 @@ from lib import log
 from lib import mongo, db
 from service import wechat_service
 
+chat_room_list = []
+msg_send = 0
+
 
 def robot_processor(param):
     _id = param['_id']
     weChatInstance = itchat.new_instance()
     weChatInstance.get_chatrooms()
-    chat_room_list = []
-    msg_send = 0
     def qr_callback(uuid, status, qrcode):
         log.info("qr_callback for _id:%s" % _id)
         col_account = db.get_col_wechat_account_sync()

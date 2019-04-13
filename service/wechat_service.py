@@ -29,6 +29,7 @@ def new_user():
         raise gen.Return({'ret': -1, 'data': {'msg': '后台数据库连接异常'}})
     if doc:
         raise gen.Return({'ret': -1, 'data': {'msg': '当前有号正在进行登陆'}})
+
     _id = str(uuid.uuid4())
     ts_call = int(time.time())
     doc = {'_id': _id, 'status': WECHAT_ACCOUNT_STATUS_INIT, 'ct': ts_call, 'ut': ts_call}

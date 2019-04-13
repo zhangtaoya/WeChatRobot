@@ -1,1 +1,1 @@
-export PYTHONPATH=$PYTHONPATH:"/app/WebchatRobot"
+export PYTHONPATH=$PYTHONPATH:"/app/WeChatRobot"

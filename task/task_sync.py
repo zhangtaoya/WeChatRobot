@@ -9,14 +9,19 @@ import random
 import urllib2
 import ujson
 
-URL_LINK_WORL = 'https://www.7234.cn/api/v1/category/1/page/10'
+URL_LINK_WORL = 'https://www.7234.cn/api/v1/category/%d/page/10'
+TYPES = [1, 2, 3, 4]
 
 
 def get_linkworld_tasks():
+    tasks = []
     try:
-        resp = urllib2.urlopen(URL_LINK_WORL).read()
-        jv = ujson.loads(resp)
-        return jv
+        for ty in TYPES:
+            url = URL_LINK_WORL % ty
+            resp = urllib2.urlopen(url).read()
+            jv = ujson.loads(resp)
+            tasks = tasks + jv
+        return tasks
     except Exception as e:
         log.error("get_linkworld_tasks except:%s" % str(e))
     return []

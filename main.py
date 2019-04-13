@@ -17,7 +17,7 @@ tornado.options.define("port", default=8000, help="run on the given port", type=
 
 reload(sys)
 sys.setdefaultencoding('utf8')
-
+url = 'https://www.7234.cn/api/v1/category/1/page/10'
 
 handlers = [
     (r"/", IndexHandler),

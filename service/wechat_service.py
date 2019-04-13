@@ -12,7 +12,7 @@ sys.setdefaultencoding('utf-8')
 WECHAT_ACCOUNT_STATUS_INIT = 0
 WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR = 1
 WECHAT_ACCOUNT_STATUS_WAIT_SCAN = 2
-WECHAT_ACCOUNT_STATUS_DONE = 3
+WECHAT_ACCOUNT_STATUS_LOGIN_DONE = 3
 WECHAT_ACCOUNT_STATUS_WAIT_EXIT = 4
 WECHAT_ACCOUNT_STATUS_DONE_EXIT = 5
 
@@ -26,7 +26,7 @@ def new_user():
         raise gen.Return({'ret': 1, 'data': doc['qrcode']})
     '''
 
-    doc = yield motordb.mongo_find_one(col, {'status': {'$lt': WECHAT_ACCOUNT_STATUS_DONE}})
+    doc = yield motordb.mongo_find_one(col, {'status': {'$lt': WECHAT_ACCOUNT_STATUS_LOGIN_DONE}})
     if doc is False:
         raise gen.Return({'ret': -1, 'data': {'msg': '后台数据库连接异常'}})
     if doc:

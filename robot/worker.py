@@ -41,7 +41,7 @@ def robot_processor(param):
             weChatInstance.logout()
 
         ret = mongo.mongo_update_one(col_account, {'_id': _id},
-                                     {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_DONE}})
+                                     {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE}})
         if not ret:
             log.error("login process for update done status failed: %s, now logout" % _id)
             weChatInstance.logout()
@@ -73,5 +73,5 @@ def robot_processor(param):
         elif status == wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_EXIT:
             log_out(_id)
             sys.exit(0)
-        else:
+        elif status == wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE:
             work()

@@ -5,6 +5,8 @@ from lib.ItChat import itchat
 from lib import log
 from lib import mongo, db
 from service import wechat_service
+import random
+
 
 chat_room_list = []
 msg_send = 0
@@ -71,12 +73,13 @@ def robot_processor(param):
         chat_room_name = '机器人测试'
         if not msg_send:
             log.info("robot send msg now")
-            chat_room = get_chat_room(chat_room_name)
-            chat_room.send_msg("hi, i'm robot")
+            if random.randint(0, 10) == 0:
+                chat_room = get_chat_room(chat_room_name)
+                chat_room.send_msg("hi, i'm robot, random send msg")
         else:
             log.info("robot will not send msg")
         n_rooms = len(chat_room_list)
-        msg_send = 1
+        # msg_send = 1
         log.info("task idle, try one work, n_rooms:%s" % n_rooms)
         return
 

@@ -20,6 +20,10 @@ WECHAT_ACCOUNT_STATUS_DONE_EXIT = 5
 @gen.coroutine
 def new_user():
     col = get_col_wechat_account()
+    doc = yield motordb.mongo_find_one(col, {'status': WECHAT_ACCOUNT_STATUS_WAIT_SCAN})
+    if doc:
+        raise gen.Return({'ret': 1, 'data': doc['qrcode']})
+
     doc = yield motordb.mongo_find_one(col, {'status': {'$lt': WECHAT_ACCOUNT_STATUS_DONE}})
     if doc is False:
         raise gen.Return({'ret': -1, 'data': {'msg': '后台数据库连接异常'}})

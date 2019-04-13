@@ -2,7 +2,6 @@
 import sys
 from multiprocessing import Process
 import os
-
 import time
 from lib import mongo
 from lib import db

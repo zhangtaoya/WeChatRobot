@@ -10,7 +10,9 @@ from service import wechat_service
 def robot_processor(param):
     _id = param['_id']
     weChatInstance = itchat.new_instance()
-
+    weChatInstance.get_chatrooms()
+    chat_room_list = []
+    msg_send = 0
     def qr_callback(uuid, status, qrcode):
         log.info("qr_callback for _id:%s" % _id)
         col_account = db.get_col_wechat_account_sync()
@@ -32,6 +34,7 @@ def robot_processor(param):
         log.info("qr_callback@update _id:%s data succeed" % _id)
 
     def login_process(_id):
+        global chat_room_list
         weChatInstance.auto_login(qrCallback=qr_callback)
         log.info("login for _id:%s complete" % _id)
         col_account = db.get_col_wechat_account_sync()
@@ -45,6 +48,7 @@ def robot_processor(param):
         if not ret:
             log.error("login process for update done status failed: %s, now logout" % _id)
             weChatInstance.logout()
+        chat_room_list = weChatInstance.get_chatrooms(update=True)
 
     def log_out(_id):
         weChatInstance.logout()
@@ -55,8 +59,21 @@ def robot_processor(param):
         if not ret:
             log.error("log_out update db status failed")
 
+    def get_chat_room(name):
+        for e in chat_room_list:
+            if e['NickName'] == name:
+                return e
+        return None
+
     def work():
-        log.info("task idle, try one work")
+        global msg_send
+        chat_room_name = '机器人测试'
+        if not msg_send:
+            chat_room = get_chat_room(chat_room_name)
+            chat_room.send_msg("hi, i'm robot")
+        n_rooms = len(chat_room_list)
+        msg_send = 1
+        log.info("task idle, try one work, n_rooms:%s" % n_rooms)
         return
 
     while True:

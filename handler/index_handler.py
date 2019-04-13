@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding:utf-8
 import base64
-
+from tornado import gen
 from service import my_service, wechat_service
 from base_handler import BaseHandler
 
@@ -25,6 +25,7 @@ class LSJHandler(BaseHandler):
 
 
 class WechatLoginHandler(BaseHandler):
+    @gen.coroutine
     def get(self):
         ret = yield wechat_service.new_user()
         if ret.get('ret') != 1:

@@ -36,6 +36,7 @@ while True:
         if mongo.mongo_find_one(col_task, {'_id': task_id}):
             continue
         task['_id'] = task_id
+        task['cnt_send'] = 0
         ret = mongo.mongo_insert(col_task, task)
         if ret:
             log.info("one task added, task_id:%s" % task_id)

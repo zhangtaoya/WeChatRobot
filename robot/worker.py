@@ -73,7 +73,7 @@ def robot_processor(param):
         chat_room_name = '机器人测试'
         if not msg_send:
             log.info("robot send msg now")
-            if random.randint(0, 10) == 0:
+            if random.randint(0, 100) == 0:
                 chat_room = get_chat_room(chat_room_name)
                 chat_room.send_msg("hi, i'm robot, random send msg")
         else:

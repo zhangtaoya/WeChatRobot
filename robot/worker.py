@@ -19,10 +19,10 @@ def robot_processor(param):
             log.error("qr_callback@check record _id:%s failed" % _id)
             return
 
-        data = base64.b64encode(qrcode)
+        datab64 = base64.b64encode(qrcode)
         ts_now = int(time.time())
         ret = mongo.mongo_update_one(col_account, {'_id': _id},
-                                     {'$set': {'data': data, 'ut': ts_now,
+                                     {'$set': {'qrcode': datab64, 'ut': ts_now,
                                                'status': wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_SCAN}})
         if not ret:
             log.error("qr_callback@update _id:%s data failed" % _id)

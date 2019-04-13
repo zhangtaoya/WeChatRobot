@@ -72,10 +72,13 @@ def robot_processor(param):
         global msg_send
         chat_room_name = '机器人测试'
         if not msg_send:
-            log.info("robot send msg now")
-            if random.randint(0, 100) == 0:
+            log.info("robot try send msg now")
+            n = random.randint(0, 100)
+            if n == 0:
                 chat_room = get_chat_room(chat_room_name)
                 chat_room.send_msg("hi, i'm robot, random send msg")
+            else:
+                log.info("random num:%s" % n)
         else:
             log.info("robot will not send msg")
         n_rooms = len(chat_room_list)

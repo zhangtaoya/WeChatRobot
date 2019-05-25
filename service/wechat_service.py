@@ -25,7 +25,6 @@ def new_user():
     if doc:
         raise gen.Return({'ret': 1, 'data': doc['qrcode']})
     '''
-
     doc = yield motordb.mongo_find_one(col, {'status': {'$lt': WECHAT_ACCOUNT_STATUS_LOGIN_DONE}})
     if doc is False:
         raise gen.Return({'ret': -1, 'data': {'msg': u'后台数据库连接异常'}})

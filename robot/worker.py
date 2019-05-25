@@ -8,11 +8,11 @@ from service import wechat_service
 import random
 
 
-chat_room_list = []
 msg_send = 0
 
 
 def robot_processor(param):
+    chat_room_list = []
     _id = param['_id']
     weChatInstance = itchat.new_instance()
     weChatInstance.get_chatrooms()
@@ -37,7 +37,6 @@ def robot_processor(param):
         log.info("qr_callback@update _id:%s data succeed" % _id)
 
     def login_process(_id):
-        global chat_room_list
         weChatInstance.auto_login(qrCallback=qr_callback)
         log.info("login for _id:%s complete" % _id)
         col_account = db.get_col_wechat_account_sync()

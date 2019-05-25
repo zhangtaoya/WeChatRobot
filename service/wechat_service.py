@@ -30,6 +30,9 @@ def new_user():
     if doc is False:
         raise gen.Return({'ret': -1, 'data': {'msg': '后台数据库连接异常'}})
     if doc:
+        if doc.get('status') == WECHAT_ACCOUNT_STATUS_WAIT_SCAN:
+            qrcode = doc['qrcode']
+            raise gen.Return({'ret': 1, 'data': qrcode})
         raise gen.Return({'ret': -1, 'data': {'msg': '当前有号正在进行登陆'}})
 
     _id = str(uuid.uuid4())

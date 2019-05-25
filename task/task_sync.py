@@ -1,9 +1,12 @@
 # -*- coding:utf-8 -*-
-import time
+import time, sys
 from lib import log
 from lib import mongo, db
 import urllib2
 import ujson
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 TASKS = list()
 TASKS.append(('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试'))

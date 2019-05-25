@@ -24,6 +24,7 @@ def load_post_to_db(posts, room_name):
     for post in posts:
         pid = post['url'].strip()
         if mongo.mongo_find_one(col_task, {'_id': pid}):
+            log.info("task _id:%s dup. pass" % pid)
             continue
 
         post['_id'] = pid

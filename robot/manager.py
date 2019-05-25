@@ -19,7 +19,7 @@ while True:
         continue
 
     if not doc:
-        log.info("no wechat robot come in")
+        log.info("no wechat account come in")
         continue
     mongo.mongo_update_one(col_account,
                            {'_id': doc['_id']},

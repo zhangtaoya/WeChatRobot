@@ -37,8 +37,9 @@ def robot_processor(param):
             log.error("qr_callback@update _id:%s data failed" % _id)
         log.info("qr_callback@update _id:%s data succeed" % _id)
 
+
     def login_process(_id):
-        weChatInstance.auto_login(qrCallback=qr_callback)
+        weChatInstance.auto_login(qrCallback=qr_callback, exitCallback=log_out)
         log.info("login for _id:%s complete" % _id)
         col_account = db.get_col_wechat_account_sync()
         doc = mongo.mongo_find_one(col_account, {'_id': _id})
@@ -53,8 +54,8 @@ def robot_processor(param):
             weChatInstance.logout()
         chat_room_list = weChatInstance.get_chatrooms(update=True)
 
-    def log_out(_id):
-        weChatInstance.logout()
+    def log_out():
+        # weChatInstance.logout()
         log.info("user logout done, now update db status")
         col_account = db.get_col_wechat_account_sync()
         ret = mongo.mongo_update_one(col_account, {'_id': _id},

@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import sys
+import sys, os
 import base64, time
 from lib.ItChat import itchat
 from lib import log
@@ -63,7 +63,7 @@ def robot_processor(param):
         if not ret:
             log.error("log_out update db status failed")
         log.info("process with _id:%s exit now" % _id)
-        sys.exit(0)
+        os._exit(0)
 
     def get_chat_room(name):
         for e in chat_room_list:

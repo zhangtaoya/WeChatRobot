@@ -31,7 +31,8 @@ def robot_processor(param):
         ts_now = int(time.time())
         ret = mongo.mongo_update_one(col_account, {'_id': _id, 'status': wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR},
                                      {'$set': {'qrcode': datab64, 'ut': ts_now,
-                                               'status': wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_SCAN}})
+                                               'status': wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_SCAN,
+                                               'uuid_wechat': uuid}})
         if not ret:
             log.error("qr_callback@update _id:%s data failed" % _id)
         log.info("qr_callback@update _id:%s data succeed" % _id)
@@ -133,6 +134,9 @@ def robot_processor(param):
         if not doc:
             log.error("check _id:%s doc check failed, now exit" % _id)
             sys.exit(0)
+        uuid_wechat = doc.get('uuid_wechat')
+        ret = itchat.check_login(uuid_wechat)
+        log.info("check_login uuid_wechat:%s, ret: %s" % (uuid_wechat, ret))
         status = doc['status']
 
         if status == wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR:

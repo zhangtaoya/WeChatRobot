@@ -5,7 +5,12 @@ from lib import mongo, db
 import urllib2
 import ujson
 
-TASKS = [('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试')]
+TASKS = list()
+TASKS.append(('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试'))
+TASKS.append(('https://www.7234.cn/api/v1/category/21/page/2', '机器人测试'))
+TASKS.append(('https://www.7234.cn/api/v1/category/21/page/3', '机器人测试'))
+TASKS.append(('https://www.7234.cn/api/v1/category/21/page/4', '机器人测试'))
+TASKS.append(('https://www.7234.cn/api/v1/category/21/page/5', '机器人测试'))
 
 
 def get_linkworld_posts(url):

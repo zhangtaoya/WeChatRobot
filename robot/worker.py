@@ -103,7 +103,8 @@ def robot_processor(param):
         title = task['title']
         url = task['url']
         msg = "%s\n%s" % (title, url)
-        chat_room_name = '机器人测试'
+        # chat_room_name = '机器人测试'
+        chat_room_name = task.get('chat_room_name', '机器人测试')
         chat_room = get_chat_room(chat_room_name)
         if not chat_room:
             log.error("chat_room:%s not found" % chat_room_name)

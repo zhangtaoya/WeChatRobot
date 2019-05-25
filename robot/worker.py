@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import sys, os
+import sys, os, ujson
 import base64, time
 from lib.ItChat import itchat
 from lib import log
@@ -54,6 +54,9 @@ def robot_processor(param):
             log.error("login process for update done status failed: %s, now logout" % _id)
             weChatInstance.logout()
         chat_room_list = weChatInstance.get_chatrooms(update=True)
+        log.info("chat-room-count: %s" % len(chat_room_list))
+        for ch in chat_room_list:
+            log.info("chat-room: %s" % ujson.dumps(ch, ensure_ascii=False))
 
     def log_out():
         # weChatInstance.logout()

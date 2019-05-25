@@ -59,7 +59,7 @@ def robot_processor(param):
         chat_room_list = weChatInstance.get_chatrooms(update=True)
         log.info("chat-room-count: %s" % len(chat_room_list))
         for ch in chat_room_list:
-            log.info("chat-room: %s" % ujson.dumps(ch, ensure_ascii=False))
+            log.info("account_name:%s chat-room: %s" % (nickName, ujson.dumps(ch, ensure_ascii=False)))
 
     def log_out():
         # weChatInstance.logout()

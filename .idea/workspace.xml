@@ -30,32 +30,32 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/index_handler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-              <folding>
-                <element signature="e#37#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robot/worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="150" column="81" selection-start-line="150" selection-start-column="81" selection-end-line="150" selection-end-column="81" />
+            <state relative-caret-position="375">
+              <caret line="61" column="103" selection-start-line="61" selection-start-column="103" selection-end-line="61" selection-end-column="103" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/log.py">
+        <entry file="file://$PROJECT_DIR$/lib/ItChat/itchat/storage/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="84">
+              <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ItChat/itchat/components/login.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="79" column="75" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="75" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/wechat_service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
+            <state relative-caret-position="129">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding>
                 <element signature="e#23#33#0" expanded="true" />
               </folding>
@@ -128,6 +128,7 @@
       <find>auto_login</find>
       <find>exitCallback</find>
       <find>qr_already exists</find>
+      <find>successfully as</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -278,20 +279,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555139881699</updated>
-    </task>
-    <task id="LOCAL-00009" summary="MOD:xx">
-      <created>1555150047270</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1555150047270</updated>
-    </task>
-    <task id="LOCAL-00010" summary="MOD:xx">
-      <created>1555150102798</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1555150102798</updated>
     </task>
     <task id="LOCAL-00011" summary="MOD:xx">
       <created>1555150243646</created>
@@ -622,7 +609,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558780461356</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="MOD:xx">
+      <created>1558782150844</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1558782150844</updated>
+    </task>
+    <task id="LOCAL-00059" summary="MOD:xx">
+      <created>1558782645435</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1558782645435</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -797,16 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ItChat/itchat/components/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="281" column="24" selection-start-line="281" selection-start-column="12" selection-end-line="281" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -877,18 +868,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/wechat_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
+        <state relative-caret-position="129">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding>
             <element signature="e#23#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ItChat/itchat/components/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="79" column="75" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ItChat/itchat/storage/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/robot/worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="150" column="81" selection-start-line="150" selection-start-column="81" selection-end-line="150" selection-end-column="81" />
+        <state relative-caret-position="375">
+          <caret line="61" column="103" selection-start-line="61" selection-start-column="103" selection-end-line="61" selection-end-column="103" />
         </state>
       </provider>
     </entry>

@@ -20,6 +20,7 @@ def get_linkworld_posts(url):
 
 def load_post_to_db(posts, room_name):
     col_task = db.get_col_task_sync()
+    n_suc, n_fail = 0, 0
     for post in posts:
         pid = post['url'].strip()
         if mongo.mongo_find_one(col_task, {'_id': pid}):
@@ -30,9 +31,12 @@ def load_post_to_db(posts, room_name):
         post['chat_room_name'] = room_name
         ret = mongo.mongo_insert(col_task, post)
         if ret:
+            n_suc += 1
             log.info("one task added, task_id:%s" % pid)
         else:
+            n_fail += 1
             log.error("add task failed for task_id:%s" % pid)
+    return n_suc, n_fail
 
 
 def task_download():
@@ -42,8 +46,8 @@ def task_download():
         url = task[0]
         room_name = task[1]
         posts = get_linkworld_posts(url)
-        load_post_to_db(posts, room_name)
-        log.info("download task done:%s" % task_str)
+        n_succ, n_fail = load_post_to_db(posts, room_name)
+        log.info("download task done:%s. suc:%s, fail:%s" % (task_str, n_succ, n_fail))
 
 
 while True:

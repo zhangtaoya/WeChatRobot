@@ -37,12 +37,19 @@ def load_post_to_db(posts, room_name):
 
 def task_download():
     for task in TASKS:
+        task_str = ujson.decode(task, ensure_ascii=False)
+        log.info("start download task:%s" % task_str)
         url = task[0]
         room_name = task[1]
         posts = get_linkworld_posts(url)
         load_post_to_db(posts, room_name)
+        log.info("download task done:%s" % task_str)
 
 
 while True:
     time.sleep(10)
-    task_download()
+    try:
+        task_download()
+    except Exception as e:
+        log.error("sleep 60s. task_download except:%s" % str(e))
+        time.sleep(60)

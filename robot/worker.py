@@ -87,6 +87,12 @@ def robot_processor(param):
             log.error("account not found for _id:%s" % _id)
             return
 
+        ut = account['ut']
+        ts_now = int(time.time())
+        if ts_now < ut + 60:
+            log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ut))
+            return
+
         col_task = db.get_col_task_sync()
         task = mongo.mongo_find_and_modify(col_task,
                                            {'cnt_send': 0}, {'$inc': {'cnt_send': 1}},

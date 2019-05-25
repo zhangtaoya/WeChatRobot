@@ -7,10 +7,11 @@ import ujson
 
 TASKS = list()
 TASKS.append(('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试'))
-TASKS.append(('https://www.7234.cn/api/v1/category/21/page/2', '机器人测试'))
-TASKS.append(('https://www.7234.cn/api/v1/category/21/page/3', '机器人测试'))
-TASKS.append(('https://www.7234.cn/api/v1/category/21/page/4', '机器人测试'))
-TASKS.append(('https://www.7234.cn/api/v1/category/21/page/5', '机器人测试'))
+url_ela = 'https://www.7234.cn/api/v1/category/21/page/1'
+for room_name in ['亦来云Elastos社区23群', '亦来云Elastos社区26群',
+                  '亦来云Elastos社区25群', '亦来云Elastos社区28群', '亦来云elastos社区1群', '亦来云Elastos社区29群',
+                  '亦来云Elastos社区5群', '亦来云の链世界节点社区']:
+    TASKS.append((url_ela, room_name))
 
 
 def get_linkworld_posts(url):
@@ -27,7 +28,7 @@ def load_post_to_db(posts, room_name):
     col_task = db.get_col_task_sync()
     n_suc, n_fail = 0, 0
     for post in posts:
-        pid = post['url'].strip()
+        pid = post['url'].strip() + room_name
         if mongo.mongo_find_one(col_task, {'_id': pid}):
             log.info("task _id:%s dup. pass" % pid)
             continue

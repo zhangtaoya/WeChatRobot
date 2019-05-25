@@ -155,7 +155,7 @@ def robot_processor(param):
             ct = doc['ct']
             ts_now = int(time.time())
             if ts_now > ct + 60 * 5:
-                log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ut))
+                log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ct))
                 return
 
         if status == wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR:

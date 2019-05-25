@@ -62,6 +62,8 @@ def robot_processor(param):
                                      {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_DONE_EXIT}})
         if not ret:
             log.error("log_out update db status failed")
+        log.info("process with _id:%s exit now" % _id)
+        sys.exit(0)
 
     def get_chat_room(name):
         for e in chat_room_list:

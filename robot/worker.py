@@ -29,6 +29,12 @@ def robot_processor(param):
             log.warn("qr_already exists, but refresh it, _id:%s" % _id)
             # return
 
+        ts_now = int(time.time())
+        ut = doc['ut']
+        if ts_now - ut > 60 * 5:
+            log.info("qr_timeout, process exit now. _id:%s" % _id)
+            os._exit(0)
+
         datab64 = base64.b64encode(qrcode)
         ts_now = int(time.time())
         ret = mongo.mongo_update_one(col_account, {'_id': _id, 'status': wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR},
@@ -85,11 +91,6 @@ def robot_processor(param):
         if not account:
             log.error("account not found for _id:%s" % _id)
             return
-        ut = account['ut']
-        ts_now = int(time.time())
-        if ts_now < ut + 60:
-            log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ut))
-            return
 
         col_task = db.get_col_task_sync()
         task = mongo.mongo_find_and_modify(col_task,
@@ -145,14 +146,22 @@ def robot_processor(param):
         doc = mongo.mongo_find_one(col_account, {'_id': _id})
         if not doc:
             log.error("check _id:%s doc check failed, now exit" % _id)
-            sys.exit(0)
+            os._exit(0)
+
         status = doc['status']
+        if status in [wechat_service.WECHAT_ACCOUNT_STATUS_INIT,
+                      wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR,
+                      wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_SCAN]:
+            ut = doc['ut']
+            ts_now = int(time.time())
+            if ts_now < ut + 60:
+                log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ut))
+                return
 
         if status == wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR:
             login_process(_id)
         elif status == wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_EXIT:
-            log_out(_id)
-            sys.exit(0)
+            log_out()
         elif status == wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE:
             # work()
             send_task()

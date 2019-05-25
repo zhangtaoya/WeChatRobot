@@ -35,8 +35,11 @@ def load_post_to_db(posts, room_name):
             log.info("task _id:%s dup. pass" % pid)
             continue
 
+        ts_now = int(time.time())
         post['_id'] = pid
         post['cnt_send'] = 0
+        post['ct'] = ts_now
+        post['ut'] = ts_now
         post['chat_room_name'] = room_name
         ret = mongo.mongo_insert(col_task, post)
         if ret:

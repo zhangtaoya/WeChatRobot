@@ -72,8 +72,11 @@ def robot_processor(param):
         os._exit(0)
 
     def get_chat_room(name):
+        global chat_room_list
         for e in chat_room_list:
-            if e['NickName'] == name:
+            nick_name = e['NickName']
+            log.info("room-name:%s" % nick_name)
+            if nick_name == name:
                 return e
         return None
 

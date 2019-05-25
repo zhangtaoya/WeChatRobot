@@ -27,13 +27,6 @@ def robot_processor(param):
             return
         if doc['status'] != wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR:
             log.warn("qr_already exists, but refresh it, _id:%s" % _id)
-            # return
-
-        ts_now = int(time.time())
-        ut = doc['ut']
-        if ts_now - ut > 60 * 5:
-            log.info("qr_timeout, process exit now. _id:%s" % _id)
-            os._exit(0)
 
         datab64 = base64.b64encode(qrcode)
         ts_now = int(time.time())
@@ -155,7 +148,8 @@ def robot_processor(param):
             ct = doc['ct']
             ts_now = int(time.time())
             if ts_now > ct + 60 * 5:
-                log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ct))
+                log.info("status:%s invalid. ts_now:%s already 300s after ct:%s. exit now" % (status, ts_now, ct))
+                os._exit(0)
                 return
 
         if status == wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR:

@@ -18,7 +18,7 @@ def get_linkworld_posts(url):
     try:
         resp = urllib2.urlopen(url).read()
         posts = ujson.loads(resp)
-        return posts
+        return [posts[0]]
     except Exception as e:
         log.error("get_linkworld_tasks except:%s" % str(e))
     return []

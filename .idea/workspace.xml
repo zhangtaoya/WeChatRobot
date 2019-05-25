@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3b85833-277f-4427-b417-42a502f2abe3" name="Default Changelist" comment="">
+    <list default="true" id="b3b85833-277f-4427-b417-42a502f2abe3" name="Default Changelist" comment="MOD:xx">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robot/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/robot/worker.py" afterDir="false" />
     </list>
@@ -33,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robot/worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="61" column="103" selection-start-line="61" selection-start-column="103" selection-end-line="61" selection-end-column="103" />
+            <state relative-caret-position="174">
+              <caret line="91" column="47" lean-forward="true" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -129,6 +129,8 @@
       <find>exitCallback</find>
       <find>qr_already exists</find>
       <find>successfully as</find>
+      <find>nickName</find>
+      <find>no tasks, return</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -279,20 +281,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555139881699</updated>
-    </task>
-    <task id="LOCAL-00011" summary="MOD:xx">
-      <created>1555150243646</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1555150243646</updated>
-    </task>
-    <task id="LOCAL-00012" summary="MOD:xx">
-      <created>1555150268540</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1555150268540</updated>
     </task>
     <task id="LOCAL-00013" summary="MOD:xx">
       <created>1555151296975</created>
@@ -623,7 +611,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558782645435</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="MOD:xx">
+      <created>1558785692436</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1558785692437</updated>
+    </task>
+    <task id="LOCAL-00061" summary="MOD:xx">
+      <created>1558786317167</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1558786317167</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -895,8 +897,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robot/worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="61" column="103" selection-start-line="61" selection-start-column="103" selection-end-line="61" selection-end-column="103" />
+        <state relative-caret-position="174">
+          <caret line="91" column="47" lean-forward="true" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
         </state>
       </provider>
     </entry>

@@ -89,7 +89,7 @@ def robot_processor(param):
 
         ut = account['ut']
         ts_now = int(time.time())
-        if ts_now < ut + 60:
+        if ts_now < ut + random.randint(5, 10):
             log.info("ts_now:%s in 60 seconds of ut:%s, should not send_msg, return" % (ts_now, ut))
             return
 

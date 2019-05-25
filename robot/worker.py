@@ -137,9 +137,6 @@ def robot_processor(param):
         if not doc:
             log.error("check _id:%s doc check failed, now exit" % _id)
             sys.exit(0)
-        uuid_wechat = doc.get('uuid_wechat')
-        ret = itchat.check_login(uuid_wechat)
-        log.info("check_login uuid_wechat:%s, ret: %s" % (uuid_wechat, ret))
         status = doc['status']
 
         if status == wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR:

@@ -49,8 +49,10 @@ def robot_processor(param):
             log.error("login process for _id:%s doc check failed, now logout" % _id)
             weChatInstance.logout()
 
+        nickName = weChatInstance.storageClass.nickName
         ret = mongo.mongo_update_one(col_account, {'_id': _id},
-                                     {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE}})
+                                     {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE,
+                                               'nickName': nickName}})
         if not ret:
             log.error("login process for update done status failed: %s, now logout" % _id)
             weChatInstance.logout()
@@ -101,7 +103,7 @@ def robot_processor(param):
         chat_room_name = task.get('chat_room_name', '机器人测试')
         chat_room = get_chat_room(chat_room_name)
         if not chat_room:
-            log.error("chat_room:%s not found" % chat_room_name)
+            log.error("nickName:%s. chat_room:%s not found" % (account.get('nickName'), chat_room_name))
             # reset back task cnt_send
             mongo.mongo_update_one(col_task, {'_id': task_id}, {'$inc': {'cnt_send': -1}})
             return

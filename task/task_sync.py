@@ -42,7 +42,7 @@ def load_post_to_db(posts, room_name):
 
 def task_download():
     for task in TASKS:
-        task_str = ujson.decode(task, ensure_ascii=False)
+        task_str = ujson.dumps(task, ensure_ascii=False)
         log.info("start download task:%s" % task_str)
         url = task[0]
         room_name = task[1]

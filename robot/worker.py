@@ -39,6 +39,7 @@ def robot_processor(param):
 
 
     def login_process(_id):
+        global chat_room_list
         weChatInstance.auto_login(qrCallback=qr_callback, exitCallback=log_out)
         log.info("login for _id:%s complete" % _id)
         col_account = db.get_col_wechat_account_sync()

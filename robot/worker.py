@@ -24,8 +24,8 @@ def robot_processor(param):
             log.error("qr_callback@check record _id:%s failed" % _id)
             return
         if doc['status'] != wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR:
-            log.warn("qr_already exists, no need update, _id:%s" % _id)
-            return
+            log.warn("qr_already exists, but refresh it, _id:%s" % _id)
+            # return
 
         datab64 = base64.b64encode(qrcode)
         ts_now = int(time.time())

@@ -7,6 +7,8 @@ from lib import mongo, db
 from service import wechat_service
 import random
 
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 msg_send = 0
 

@@ -1,45 +1,48 @@
 # -*- coding:utf-8 -*-
-import sys
-import base64, time
-from lib.ItChat import itchat
+import time
 from lib import log
 from lib import mongo, db
-from service import wechat_service
-import random
 import urllib2
 import ujson
 
-URL_LINK_WORL = 'https://www.7234.cn/api/v1/category/%d/page/10'
-TYPES = [1, 2, 3, 4]
+TASKS = [('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试')]
 
 
-def get_linkworld_tasks():
-    tasks = []
+def get_linkworld_posts(url):
     try:
-        for ty in TYPES:
-            url = URL_LINK_WORL % ty
-            resp = urllib2.urlopen(url).read()
-            jv = ujson.loads(resp)
-            tasks = tasks + jv
-        return tasks
+        resp = urllib2.urlopen(url).read()
+        posts = ujson.loads(resp)
+        return posts
     except Exception as e:
         log.error("get_linkworld_tasks except:%s" % str(e))
     return []
 
 
-while True:
-    time.sleep(10)
-    tasks = get_linkworld_tasks()
+def load_post_to_db(posts, room_name):
     col_task = db.get_col_task_sync()
-    for task in tasks:
-        task_id = task['url'].strip()
-        if mongo.mongo_find_one(col_task, {'_id': task_id}):
+    for post in posts:
+        pid = post['url'].strip()
+        if mongo.mongo_find_one(col_task, {'_id': pid}):
             continue
 
-        task['_id'] = task_id
-        task['cnt_send'] = 0
-        ret = mongo.mongo_insert(col_task, task)
+        post['_id'] = pid
+        post['cnt_send'] = 0
+        post['chat_room_name'] = room_name
+        ret = mongo.mongo_insert(col_task, post)
         if ret:
-            log.info("one task added, task_id:%s" % task_id)
+            log.info("one task added, task_id:%s" % pid)
         else:
-            log.error("add task failed for task_id:%s" % task_id)
+            log.error("add task failed for task_id:%s" % pid)
+
+
+def task_download():
+    for task in TASKS:
+        url = task[0]
+        room_name = task[1]
+        posts = get_linkworld_posts(url)
+        load_post_to_db(posts, room_name)
+
+
+while True:
+    time.sleep(10)
+    task_download()

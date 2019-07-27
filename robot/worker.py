@@ -31,7 +31,7 @@ def robot_processor(param):
 
         datab64 = base64.b64encode(qrcode)
         ts_now = int(time.time())
-        ret = mongo.mongo_update_one(col_account, {'_id': _id, 'status': wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_GEN_QR},
+        ret = mongo.mongo_update_one(col_account, {'_id': _id},
                                      {'$set': {'qrcode': datab64, 'ut': ts_now,
                                                'status': wechat_service.WECHAT_ACCOUNT_STATUS_WAIT_SCAN,
                                                'uuid_wechat': uuid}})

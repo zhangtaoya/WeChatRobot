@@ -126,7 +126,7 @@ def robot_processor(param):
             return
 
         chat_room.send_msg(msg)
-        log.info("_id:%s,chat_room:%s, send msg:%s" % (_id, chat_room, msg))
+        log.info("_id:%s,chat_room:%s, send msg:%s" % (_id, chat_room_name, msg))
 
     def work():
         global msg_send

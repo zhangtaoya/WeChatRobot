@@ -9,10 +9,10 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 log.init_logger("task_sync")
 TASKS = list()
-TASKS.append(('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试'))
 url_ela = 'https://www.7234.cn/api/v1/category/21/page/1'
 url_nuls = 'https://www.7234.cn/api/v1/category/24/page/1'
 url_bottos = 'https://www.7234.cn/api/v1/category/22/page/1'
+
 TASKS.append((url_ela, ["机器人测试"]))
 
 rlist = []
@@ -68,13 +68,13 @@ def load_post_to_db(posts, rlist):
 
 def task_download():
     for task in TASKS:
-        task_str = ujson.dumps(task, ensure_ascii=False)
-        log.info("start download task:%s" % task_str)
         url = task[0]
+        log.info("start download task:%s" % url)
+
         rlist = task[1]
         posts = get_linkworld_posts(url)
         n_succ, n_fail = load_post_to_db(posts, rlist)
-        log.info("download task done:%s. suc:%s, fail:%s" % (task_str, n_succ, n_fail))
+        log.info("download task done:%s. suc:%s, fail:%s" % (url, n_succ, n_fail))
 
 
 while True:

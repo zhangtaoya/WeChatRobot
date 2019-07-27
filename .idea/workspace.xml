@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3b85833-277f-4427-b417-42a502f2abe3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/task/task_sync.py" beforeDir="false" afterPath="$PROJECT_DIR$/task/task_sync.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/robot/worker.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robot/worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+            <state relative-caret-position="315">
+              <caret line="99" column="69" selection-start-line="99" selection-start-column="69" selection-end-line="99" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -93,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task/task_sync.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+            <state relative-caret-position="75">
+              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -164,10 +165,10 @@
         <option value="$PROJECT_DIR$/robot/run.sh" />
         <option value="$PROJECT_DIR$/run.sh" />
         <option value="$PROJECT_DIR$/service/wechat_service.py" />
-        <option value="$PROJECT_DIR$/robot/worker.py" />
         <option value="$PROJECT_DIR$/lib/log.py" />
         <option value="$PROJECT_DIR$/robot/manager.py" />
         <option value="$PROJECT_DIR$/task/task_sync.py" />
+        <option value="$PROJECT_DIR$/robot/worker.py" />
       </list>
     </option>
   </component>
@@ -296,20 +297,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555139881699</updated>
-    </task>
-    <task id="LOCAL-00036" summary="MOD:xx">
-      <created>1558773049394</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1558773049394</updated>
-    </task>
-    <task id="LOCAL-00037" summary="MOD:xx">
-      <created>1558773246813</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1558773246813</updated>
     </task>
     <task id="LOCAL-00038" summary="MOD:xx">
       <created>1558773705025</created>
@@ -640,7 +627,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564227863520</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="MOD:xx">
+      <created>1564228750957</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1564228750957</updated>
+    </task>
+    <task id="LOCAL-00086" summary="MOD:xx">
+      <created>1564228865925</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1564228865925</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -890,10 +891,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robot/worker.py">
+    <entry file="file://$PROJECT_DIR$/service/wechat_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+        <state relative-caret-position="825">
+          <caret line="55" column="68" selection-start-line="55" selection-start-column="68" selection-end-line="55" selection-end-column="68" />
+          <folding>
+            <element signature="e#23#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/task_sync.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -907,20 +918,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/wechat_service.py">
+    <entry file="file://$PROJECT_DIR$/robot/worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="68" selection-start-line="55" selection-start-column="68" selection-end-line="55" selection-end-column="68" />
-          <folding>
-            <element signature="e#23#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task/task_sync.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        <state relative-caret-position="315">
+          <caret line="99" column="69" selection-start-line="99" selection-start-column="69" selection-end-line="99" selection-end-column="69" />
         </state>
       </provider>
     </entry>

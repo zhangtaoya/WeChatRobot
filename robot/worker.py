@@ -18,6 +18,7 @@ def robot_processor(param):
     _id = param['_id']
     weChatInstance = itchat.new_instance()
     weChatInstance.get_chatrooms()
+    t_start = int(time.time())
     def qr_callback(uuid, status, qrcode):
         log.info("qr_callback for _id:%s" % _id)
         col_account = db.get_col_wechat_account_sync()
@@ -62,13 +63,13 @@ def robot_processor(param):
             log.info("account_name:%s chat-room: %s" % (nickName, ujson.dumps(ch, ensure_ascii=False)))
 
     def log_out():
-        # weChatInstance.logout()
         log.info("user logout done, now update db status")
         col_account = db.get_col_wechat_account_sync()
         ret = mongo.mongo_update_one(col_account, {'_id': _id},
                                      {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_DONE_EXIT}})
         if not ret:
             log.error("log_out update db status failed")
+        weChatInstance.logout()
         log.info("process with _id:%s exit now" % _id)
         os._exit(0)
 
@@ -171,3 +172,5 @@ def robot_processor(param):
         elif status == wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE:
             # work()
             send_task()
+        if time.time() - t_start > 3600 * 48:
+            log_out()

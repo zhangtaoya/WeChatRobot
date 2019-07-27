@@ -27,8 +27,15 @@ for rid in range(1, 100):
     rlist.append(room_name)
 TASKS.append((url_nuls, rlist))
 
-rlist = ["铂链-人工智能第一公链019群", "Bottos社区活动4群"]
+rlist = []
+for rid in range(1, 100):
+    room_name = "铂链-人工智能第一公链0%d群" % rid
+    rlist.append(room_name)
+for rid in range(1, 10):
+    room_name = "Bottos社区活动%d群" % rid
+    rlist.append(room_name)
 TASKS.append((url_bottos, rlist))
+
 
 def get_linkworld_posts(url):
     try:

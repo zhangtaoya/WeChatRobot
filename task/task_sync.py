@@ -31,7 +31,7 @@ def load_post_to_db(posts, room_name):
     col_task = db.get_col_task_sync()
     n_suc, n_fail = 0, 0
     for post in posts:
-        pid = str(post['url'].strip() + room_name)
+        pid = str(post['url'].strip() + room_name.strip())
         if mongo.mongo_find_one(col_task, {'_id': pid}):
             log.info("task _id:%s dup. pass" % pid)
             continue

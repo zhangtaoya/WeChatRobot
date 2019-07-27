@@ -69,7 +69,7 @@ def robot_processor(param):
                                      {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_DONE_EXIT}})
         if not ret:
             log.error("log_out update db status failed")
-        weChatInstance.logout()
+        # weChatInstance.logout()
         log.info("process with _id:%s exit now" % _id)
         os._exit(0)
 
@@ -172,5 +172,5 @@ def robot_processor(param):
         elif status == wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE:
             # work()
             send_task()
-        if time.time() - t_start > 3600 * 48:
+        if time.time() - t_start > 60:
             log_out()

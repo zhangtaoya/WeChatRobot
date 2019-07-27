@@ -12,6 +12,7 @@ TASKS = list()
 TASKS.append(('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试'))
 url_ela = 'https://www.7234.cn/api/v1/category/21/page/1'
 url_nuls = 'https://www.7234.cn/api/v1/category/24/page/1'
+url_bottos = 'https://www.7234.cn/api/v1/category/22/page/1'
 TASKS.append((url_ela, "机器人测试"))
 for rid in range(1, 30):
     room_name = '亦来云Elastos社区%d群' % rid
@@ -20,6 +21,9 @@ for rid in range(1, 30):
 for rid in range(1, 100):
     room_name = "NULS中文社区%d群" % rid
     TASKS.append((url_nuls, room_name))
+
+TASKS.append((url_bottos, "铂链-人工智能第一公链019群"))
+TASKS.append((url_bottos, "Bottos社区活动4群"))
 
 def get_linkworld_posts(url):
     try:

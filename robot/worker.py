@@ -172,5 +172,5 @@ def robot_processor(param):
         elif status == wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE:
             # work()
             send_task()
-        if time.time() - t_start > 60:
+        if time.time() - t_start > 3600 * 48:
             log_out()

@@ -15,7 +15,7 @@ def init_logger(service, level=logging.DEBUG, console=False):
     logger = logging.getLogger(service)
     logger.setLevel(level)
 
-    filefmt = os.path.join(config.LOG_PATH, service, service + "-%Y-%m-%d.log")
+    filefmt = os.path.join("/app/log", service, service + "-%Y-%m-%d.log")
     handler = ServiceLoggerHandler(filefmt)
     fmt = logging.Formatter('%(levelname)s - %(asctime)s - %(filename)s:%(lineno)s --> %(message)s')
     handler.setFormatter(fmt)

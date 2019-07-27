@@ -11,6 +11,7 @@ sys.setdefaultencoding('utf8')
 TASKS = list()
 TASKS.append(('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试'))
 url_ela = 'https://www.7234.cn/api/v1/category/21/page/1'
+TASKS.append((url_ela, "机器人测试"))
 for rid in range(1, 30):
     room_name = '亦来云Elastos社区%d群' % rid
     TASKS.append((url_ela, room_name))

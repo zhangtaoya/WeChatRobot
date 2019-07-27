@@ -46,13 +46,11 @@ def new_user():
         raise gen.Return({'ret': -1, 'data': {'msg': u'生成新数据失败'}})
 
     # max 20s
-    qrcode = ''
     while time.time() < ts_call + 20:
         doc = yield motordb.mongo_find_one(col, {'_id': _id})
         if doc.get('status') == WECHAT_ACCOUNT_STATUS_WAIT_SCAN:
             qrcode = doc['qrcode']
-            break
+            raise gen.Return({'ret': ret, 'data': qrcode})
         time.sleep(0.5)
 
-    raise gen.Return({'ret': 1, 'data': qrcode})
-
+    raise gen.Return({'ret': ret, 'data': {'msg': 'get qrcode failed'}})

@@ -7,7 +7,7 @@ import ujson
 
 reload(sys)
 sys.setdefaultencoding('utf8')
-
+log.init_logger("task_sync")
 TASKS = list()
 TASKS.append(('https://www.7234.cn/api/v1/category/21/page/1', '机器人测试'))
 url_ela = 'https://www.7234.cn/api/v1/category/21/page/1'

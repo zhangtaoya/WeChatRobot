@@ -7,10 +7,11 @@ import datetime
 from config import config
 
 logger = None
-
+ch = None
 
 def init_logger(service, level=logging.DEBUG, console=False):
     global logger
+    global ch
     if logger:
         return logger
     logger = logging.getLogger(service)
@@ -48,6 +49,11 @@ def debug(message):
         logger.debug(message)
     else:
         logout('DEBUG', message)
+
+
+def flush():
+    global ch
+    ch.flush()
 
 
 def info(message):

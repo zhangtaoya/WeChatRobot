@@ -38,6 +38,7 @@ def robot_processor(param):
         if not ret:
             log.error("qr_callback@update _id:%s data failed" % _id)
         log.info("qr_callback@update _id:%s data succeed" % _id)
+        log.flush()
 
 
     def login_process(_id):
@@ -71,6 +72,7 @@ def robot_processor(param):
             log.error("log_out update db status failed")
         # weChatInstance.logout()
         log.info("process with _id:%s exit now" % _id)
+        log.flush()
         os._exit(0)
 
     def get_chat_room(name):

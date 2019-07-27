@@ -95,7 +95,8 @@ def robot_processor(param):
 
         col_task = db.get_col_task_sync()
         task = mongo.mongo_find_and_modify(col_task,
-                                           {'cnt_send': 0, "ut": {'$lt': ts_now - 10}},
+                                           {'cnt_send': 0, "ut": {'$lt': ts_now - 10},
+                                            "ct": {'$gt': {ts_now - 3600 * 12}}},
                                            {'$inc': {'cnt_send': 1},
                                             '$set': {"ut": ts_now}},
                                            upsert=False)

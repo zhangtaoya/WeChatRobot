@@ -10,7 +10,7 @@ from service import wechat_service
 
 from worker import robot_processor
 
-log.init_logger("manager")
+log.init_logger("wxrobot_manager")
 while True:
     time.sleep(4)
     col_account = db.get_col_wechat_account_sync()

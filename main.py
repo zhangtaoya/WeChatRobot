@@ -9,8 +9,8 @@ import tornado.ioloop
 import tornado.options
 from tornado.options import define, options
 
-
 from handler.index_handler import *
+from handler.tag_handler import *
 
 
 tornado.options.define("port", default=8000, help="run on the given port", type=int)
@@ -23,6 +23,13 @@ handlers = [
     (r"/", IndexHandler),
     (r"/lsj", LSJHandler),
     (r"/wechat_login", WechatLoginHandler),
+    (r"/tag/create", TagCreateHandler),
+    (r"/tag/del", TagDelHandler),
+    (r"/tag/tag_list", TagListHandler),
+    (r"/tag/chatroom_list", ChatroomListHandler),
+    (r"/tag/bind", TagBindHandler),
+    (r"/tag/unbind", TagUnBindHandler),
+    (r"/tag/send_msg", TagUnSendMsgHandler),
 ]
 
 template_path = os.path.join(os.path.dirname(__file__),"template")

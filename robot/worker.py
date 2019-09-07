@@ -19,6 +19,7 @@ def robot_processor(param):
     weChatInstance = itchat.new_instance()
     weChatInstance.get_chatrooms()
     t_start = int(time.time())
+    nick_name = ''
     def qr_callback(uuid, status, qrcode):
         log.info("qr_callback for _id:%s" % _id)
         col_account = db.get_col_wechat_account_sync()
@@ -41,7 +42,7 @@ def robot_processor(param):
 
 
     def login_process(_id):
-        global chat_room_list
+        global chat_room_list, nick_name
         weChatInstance.auto_login(qrCallback=qr_callback, exitCallback=log_out)
         log.info("login for _id:%s complete" % _id)
         col_account = db.get_col_wechat_account_sync()
@@ -51,6 +52,7 @@ def robot_processor(param):
             weChatInstance.logout()
 
         nickName = weChatInstance.storageClass.nickName
+        nick_name = nickName
         ret = mongo.mongo_update_one(col_account, {'_id': _id},
                                      {'$set': {'status': wechat_service.WECHAT_ACCOUNT_STATUS_LOGIN_DONE,
                                                'nickName': nickName}})
@@ -59,8 +61,18 @@ def robot_processor(param):
             weChatInstance.logout()
         chat_room_list = weChatInstance.get_chatrooms(update=True)
         log.info("chat-room-count: %s" % len(chat_room_list))
+        col_chatroom_list = db.get_col_tag_chatroom()
         for ch in chat_room_list:
-            log.info("account_name:%s chat-room: %s" % (nickName, ujson.dumps(ch, ensure_ascii=False)))
+            chat_room_name = ch.get('NickName')
+            if not chat_room_name:
+                log.error(
+                    "account_name:%s update chat-room failed: %s" % (nickName, ujson.dumps(ch, ensure_ascii=False)))
+            else:
+                ret = mongo.mongo_update_one(col_chatroom_list, {'chatroom_name': chat_room_name, 'nick': nickName},
+                                             {'$set': {'ut': ts_now}}, up=True)
+                log.error(
+                    "account_name:%s update chat-room ret:%s : %s" % (
+                    nickName, ret, ujson.dumps(ch, ensure_ascii=False)))
 
     def log_out():
         log.info("user logout done, now update db status")

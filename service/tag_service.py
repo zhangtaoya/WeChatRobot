@@ -31,7 +31,7 @@ def tag_del(name):
         raise gen.Return({'ret': -1, 'data': {'msg': 'tag not exists'}})
 
     col_chat_room = get_col_tag_chatroom()
-    ret = yield motordb.mongo_delete(col_chat_room, {'tag': name})
+    ret = yield motordb.mongo_update_many(col_chat_room, {'tag': name}, {'$unset': {'tag': 1}})
     if not ret:
         raise gen.Return({'ret': -1, 'data': {'msg': 'tag:%s delete chatroom failed' % name}})
 

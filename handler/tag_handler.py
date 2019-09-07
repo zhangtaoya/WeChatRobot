@@ -77,7 +77,7 @@ class TagUnBindHandler(BaseHandler):
         return
 
 
-class TagUnSendMsgHandler(BaseHandler):
+class TagSendMsgHandler(BaseHandler):
     @gen.coroutine
     def post(self):
         tag = self.params.get('tag')

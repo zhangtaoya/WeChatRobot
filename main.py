@@ -29,7 +29,7 @@ handlers = [
     (r"/robot_tag/chatroom_list", ChatroomListHandler),
     (r"/robot_tag/bind", TagBindHandler),
     (r"/robot_tag/unbind", TagUnBindHandler),
-    (r"/robot_tag/send_msg", TagUnSendMsgHandler),
+    (r"/robot_tag/send_msg", TagSendMsgHandler),
 ]
 
 template_path = os.path.join(os.path.dirname(__file__),"template")

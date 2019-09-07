@@ -11,7 +11,7 @@ class TagCreateHandler(BaseHandler):
     def post(self):
         name = self.params.get('tag')
         if not name:
-            self.jsonify({'ret': -1, 'data': {'msg': 'name empty'}})
+            self.jsonify({'ret': -1, 'data': {'msg': 'tag empty'}})
             return
         ret = yield s.tag_create(name)
         self.jsonify(ret)
@@ -23,7 +23,7 @@ class TagDelHandler(BaseHandler):
     def post(self):
         name = self.params.get('tag')
         if not name:
-            self.jsonify({'ret': -1, 'data': {'msg': 'name empty'}})
+            self.jsonify({'ret': -1, 'data': {'msg': 'tag empty'}})
             return
         ret = yield s.tag_del(name)
         self.jsonify(ret)

@@ -61,7 +61,7 @@ def robot_processor(param):
             weChatInstance.logout()
         chat_room_list = weChatInstance.get_chatrooms(update=True)
         log.info("chat-room-count: %s" % len(chat_room_list))
-        col_chatroom_list = db.get_col_tag_chatroom()
+        col_chatroom_list = db.get_col_tag_chatroom_sync()
         for ch in chat_room_list:
             chat_room_name = ch.get('NickName')
             if not chat_room_name:

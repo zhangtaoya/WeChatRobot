@@ -27,16 +27,16 @@ def get_col_task_sync():
 
 
 def get_col_tag_tag():
-    return motordb.mongo_collection('tag', 'tag', config.DB_HOST, config.DB_PORT)
+    return motordb.mongo_collection('robot_tag', 'tag', config.DB_HOST, config.DB_PORT)
 
 
 def get_col_tag_chatroom():
-    return motordb.mongo_collection('tag', 'chatroom', config.DB_HOST, config.DB_PORT)
+    return motordb.mongo_collection('robot_tag', 'chatroom', config.DB_HOST, config.DB_PORT)
 
 
 def get_col_tag_chatroom_sync():
-    return mongo.mongo_collection('tag', 'chatroom', config.DB_HOST, config.DB_PORT)
+    return mongo.mongo_collection('robot_tag', 'chatroom', config.DB_HOST, config.DB_PORT)
 
 
 def get_col_tag_msg_dedup():
-    return motordb.mongo_collection('tag', 'msg_dedup', config.DB_HOST, config.DB_PORT)
+    return motordb.mongo_collection('robot_tag', 'msg_dedup', config.DB_HOST, config.DB_PORT)

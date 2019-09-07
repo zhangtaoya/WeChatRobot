@@ -23,13 +23,13 @@ handlers = [
     (r"/", IndexHandler),
     (r"/lsj", LSJHandler),
     (r"/wechat_login", WechatLoginHandler),
-    (r"/tag/create", TagCreateHandler),
-    (r"/tag/del", TagDelHandler),
-    (r"/tag/tag_list", TagListHandler),
-    (r"/tag/chatroom_list", ChatroomListHandler),
-    (r"/tag/bind", TagBindHandler),
-    (r"/tag/unbind", TagUnBindHandler),
-    (r"/tag/send_msg", TagUnSendMsgHandler),
+    (r"/robot_tag/create", TagCreateHandler),
+    (r"/robot_tag/del", TagDelHandler),
+    (r"/robot_tag/tag_list", TagListHandler),
+    (r"/robot_tag/chatroom_list", ChatroomListHandler),
+    (r"/robot_tag/bind", TagBindHandler),
+    (r"/robot_tag/unbind", TagUnBindHandler),
+    (r"/robot_tag/send_msg", TagUnSendMsgHandler),
 ]
 
 template_path = os.path.join(os.path.dirname(__file__),"template")
